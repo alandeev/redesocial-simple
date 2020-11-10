@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.5.0",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "scripts": {
+    "dev": "nodemon ./src"
+  },
+  "name": "redesocial-simple-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/alandev2/redesocial-simple-backend.git",
+  "author": "Alan F <alanworking1@gmail.com>",
+  "license": "MIT"
+}

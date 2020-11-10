@@ -1,0 +1,19 @@
+{
+  "key": "a2de1366ab5b216b61638b5622a7de77",
+  "admin":{ 
+    "email": "admin@admin.com",
+    "password": "admin",
+    "is_admin": true
+  },
+  "database": {
+    "dialect": "postgres",
+    "username": "postgres",
+    "password": "docker",
+    "database": "rede-socialbasic",
+    "host": "localhost",
+    "define": {
+      "timestamps": true,
+      "underscored": true
+    }
+  }
+}
