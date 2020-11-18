@@ -2,12 +2,13 @@ const { Router } = require('express');
 
 const middleware = require('../middleware');
 
-const clientController = require('../controllers/clientController');
+const postController = require('../controllers/postController');
 
 const routes = Router();
 
 routes.use(middleware);
 
-routes.get('/', clientController.index);
+routes.get('/', postController.get_all_posts);
+routes.post('/', postController.create_post);
 
 module.exports = routes;

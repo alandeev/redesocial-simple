@@ -1,11 +1,8 @@
 const User = require('../models/User');
 
 module.exports = {
-  async get(req, res){
-    const user = req.decoded;
-
-    const user = await User.findByPk(user.id);
-
-    return res.json(user);
-  }
+  index(req, res){
+    const { name, id } = req.user;
+    return res.send({ name, id });
+  },
 }

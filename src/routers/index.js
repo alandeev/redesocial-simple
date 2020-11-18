@@ -1,14 +1,18 @@
 const { Router } = require('express');
 
-const [ extensionAuth, authRoutes ] = require('./auth.routes');
-const [ extensionClient, clientRoutes ] = require('./auth.routes');
+const authRoutes = require('./auth.routes');
+const clientRoutes = require('./client.routes');
+const postRoutes = require('./post.routes');
 
 const routes = Router();
 
 //Auth's Routes 
-routes.use(extensionAuth, authRoutes); //  ->  /
+routes.use('/', authRoutes);
 
-//Client's Routes 
-routes.use(extensionClient, clientRoutes); //  ->  /user
+//Client's Routes (Need Access Client)
+routes.use('/user', clientRoutes);
 
-module.exports = [ '/api', routes ];
+//Post's Routes (Need access Client) 
+routes.use('/user/posts', postRoutes);
+
+module.exports = routes;

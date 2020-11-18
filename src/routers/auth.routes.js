@@ -7,4 +7,4 @@ const routes = Router();
 routes.post('/authenticate', authController.authenticate);
 routes.post('/register', authController.register);
 
-module.exports = [ '/' , routes ];
+module.exports = routes;

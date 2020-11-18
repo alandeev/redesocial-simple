@@ -35,6 +35,7 @@ bower_components
 
 # node-waf configuration
 .lock-wscript
+yarn.lock
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
@@ -69,10 +70,6 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
-
-# dotenv environment variables file
-.env
-.env.test
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
