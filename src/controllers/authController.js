@@ -55,7 +55,7 @@ module.exports = {
     });
 
     if(findUserSameEmail){
-      return res.status(401).send({ error: "Email já existe" });
+      return res.status(401).send({ error: "Este E-mail já está cadastrado.", type: "email" });
     }
 
     try{

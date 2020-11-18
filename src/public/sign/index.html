@@ -12,16 +12,23 @@
     const token = localStorage.getItem('authorization');
     if(token) window.location.replace('/');
   </script>
-  <title>Conectar-se | Rede Social</title>
+  <title>Cadastrar-se | Rede Social</title>
 </head>
 <body class="body">
   <div class="container">
     <div class="title">
       <h1>Rede Social</h1>
-      <p>Logue-se usando suas credenciais.</p>
+      <p>Cadastre-se com suas informações.</p>
     </div>
     <form class="form">
       <div class="inputs">
+        <div>
+          <label for="name">Nome</label>
+          <div class="input">
+            <i class="fa fa-male"></i>
+            <input type="text" name="name" id="name" autocomplete="off">
+          </div>
+        </div>
         <div>
           <label for="email">E-mail</label>
           <div class="input">
@@ -42,30 +49,11 @@
       </div>
       <div class="buttons">
         <div>
-          <p>Não tem uma conta? <a href="/sign">Cadastre-se</a></p>
+          <p>Já tem uma conta? <a href="/auth">Conectar-se</a></p>
         </div>
-        <button type="submit">Entrar</button>
+        <button type="submit">Cadastrar</button>
       </div>
     </form>
-  </div>
-  <div class="container description" style="background: transparent;">
-    <h2>Projeto de Rede Social, tela de Login criado por Alan</h2>
-    <div class="cards">
-      <div class="card" onclick="javascript:openmedia('linkedin')">
-        <i class="fab fa-linkedin"></i>
-        <div>
-          <p>Linkedin</p>
-          <a>@alandev2</a>
-        </div>
-      </div>
-      <div class="card" onclick="javascript:openmedia('github')">
-        <i class="fab fa-github"></i>
-        <div>
-          <p>GitHub</p>
-          <a>@alandev2</a>
-        </div>
-      </div>
-    </div>
   </div>
   <script src="./script.js"></script>
 </body>
