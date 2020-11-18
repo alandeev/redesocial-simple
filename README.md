@@ -1,5 +1,16 @@
 # Rede Social
 
+#How to Install?
+
+_First you need install all dependecies with yarn or npm_
+
+`command: (yarn or npm) install`
+
+_Second you need configure database and migrate the tables_
+
+`Folder ./src/config/config.json`
+
+
 *Starting project with Node.JS in the Back-End & React.JS in the Front-End to create one redesocial simple*
 
 
