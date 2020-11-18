@@ -6,4 +6,7 @@
 Autour: [@alanfranca2](https://github.com/alanfranca2)
 
 *Tela de Autenticação*
-![authenticate-example](https://github.com/alandev2/redesocial-simple/blob/main/images/auth-page.png)
+![authenticate-example](https://github.com/alandev2/redesocial-simple/blob/main/images/auth.png)
+
+*Tela de Cadastro*
+![register-example](https://github.com/alandev2/redesocial-simple/blob/main/images/sign.png)
