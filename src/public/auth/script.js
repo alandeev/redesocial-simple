@@ -12,8 +12,8 @@ function sleep(seconds){
 }
 
 const medias = {
-  "linkedin": "http://jsfiddle.net/u7tYE/",
-  "github": "https://i.morioh.com/2020/03/23/5231af2dbd3b.jpg"
+  "linkedin": "https://www.linkedin.com/in/alandev2/",
+  "github": "https://github.com/alandev2/"
 }
 
 function openmedia(media){

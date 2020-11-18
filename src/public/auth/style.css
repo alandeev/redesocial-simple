@@ -79,7 +79,10 @@
 
 .form .inputs div .input i {
   text-align: center;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
   background: #8257E5;
   color: #fff;
 }
@@ -89,7 +92,7 @@
   width: 100%;
   border: 0;
   outline: 0;
-  padding: 7px 3px;
+  padding: 5px 8px;
   background: #121214;
 }
 
