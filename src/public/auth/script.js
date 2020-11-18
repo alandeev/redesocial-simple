@@ -1,9 +1,10 @@
 const emailElement = document.getElementById("email")
 const passwordElement = document.getElementById("password")
+const messageElement = document.getElementById("messageAlert")
 
 function setMessage(message, color){
-  document.getElementById("messageError").style.color = color;
-  document.getElementById("messageError").textContent = message;
+  messageElement.style.color = color;
+  messageElement.textContent = message;
 }
 
 function sleep(seconds){
@@ -33,7 +34,7 @@ function openmedia(media){
       const { data } = await axios.post("/api/authenticate", { email, password });
       localStorage.setItem("authorization", data.token);
       setMessage("Conectado! Redirecionando...", "#DFF2BF")
-      await sleep(5);
+      await sleep(3);
       window.location.replace('/');
     }catch({ response }){
       const data = response.data;

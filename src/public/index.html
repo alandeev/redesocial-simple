@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/reset.css">
   <link rel="stylesheet" href="./assets/style.css">
-  <title>Document</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <title>Home | Rede Social</title>
   <script>
     (function () {
       const token = localStorage.getItem('authorization');
@@ -14,11 +16,21 @@
   </script>
 </head>
 <body>
-  <div class="container">
-    <div>
-      <button onclick="javascript:exit()">SAIR</button>
+  <header class="header">
+    <div class="logo">
+      <h1>Rede Social</h1>
     </div>
-  </div>
+    <nav class="nav">
+      <ul class="navList">
+        <li>
+          <button onclick="javascript:exit()">X</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <section class="section">
+    <h1>MANUTENÇAO</h1>
+  </section>
   <script src="assets/script.js"></script>
 </body>
 </html>
