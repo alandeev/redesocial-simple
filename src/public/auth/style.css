@@ -1,0 +1,185 @@
+* {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  background: #121214;
+}
+
+.container {
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  height: 500px;
+  background: #202024;
+  padding: 20px;
+}
+
+.title {
+  margin-bottom: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title h1{
+  color: white;
+  display: flex;
+  font-size: 2.2rem;
+  justify-content: center;
+  padding: 10px;
+}
+
+.title p {
+  color: #aaa;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.form .inputs{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form .inputs div{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.form .inputs div label{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form .inputs div .input{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 2px solid gray;
+  font-size: 1.3rem;
+  border-color: #8257E5;
+}
+
+.form .inputs div .input i {
+  text-align: center;
+  padding: 10px;
+  background: #8257E5;
+  color: #fff;
+}
+
+.form .inputs div .input input{
+  height: 40px;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 7px 3px;
+  background: #121214;
+}
+
+.form .buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form .buttons {
+  font-family: Helvetica;
+  color: #8257E5;
+  text-decoration: none;
+  text-align: center;
+}
+
+.form .buttons a{
+  color: #8257E5;
+  text-decoration: none;
+}
+
+.form .buttons button {
+  border-radius: 8px;
+  font-family: Helvetica;
+  background: #8257E5;
+  color: #fff;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.form .buttons button:hover {
+  background: black;
+  color: #aaa;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+}
+
+.description h2{
+  font-size: 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  text-align: end;
+}
+
+.cards {
+  width: 100%;
+}
+
+.cards .card {
+  padding: 0 20px;
+  display: flex;
+  margin: 8px 0;
+  width: 100%;
+  height: 100px;
+  background: #29292E;
+  align-items: center;
+}
+
+.cards .card i {
+  font-size: 2.6rem;
+}
+
+.cards .card div {
+  margin: 0 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+} 
+
+.cards .card div p{
+  margin-bottom: 4px;
+  font-size: 1.4rem;
+}
+
+.cards .card:hover {
+  background: #8257E5;
+  cursor: pointer;
+  color: black;
+}
+
+#messageError{
+  margin-top: -20px;
+  color: #FFBABA;
+}
+
+@media(max-width: 1441px){
+  .description h2{
+    text-align: center;
+    font-size: 1.8rem;
+  }
+}

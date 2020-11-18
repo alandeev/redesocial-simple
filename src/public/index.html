@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/style.css">
+  <title>Document</title>
+  <script>
+    (function () {
+      const token = localStorage.getItem('authorization');
+      if(!token) return window.location.replace('/auth');
+      console.log("USUARIO CONECTADO");
+    })()
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <button onclick="javascript:exit()">SAIR</button>
+    </div>
+  </div>
+  <script src="assets/script.js"></script>
+</body>
+</html>

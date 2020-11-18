@@ -20,11 +20,11 @@ module.exports = {
     });
 
     if(!findUserSameEmail){
-      return res.status(401).send({ error: "Email não existente" });
+      return res.status(401).send({ error: "Email não existente", type: "email" });
     }
       
     if(findUserSameEmail.password !== password){
-      return res.status(401).send({ error: "Senha invalida" });
+      return res.status(401).send({ error: "Senha invalida", type: "password" });
     }
 
     const { id, name } = findUserSameEmail;

@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 //Stating Database;
 require('./database');
@@ -6,6 +7,10 @@ require('./database');
 const routes = require('./routers');
 
 const app = express();
+
+app.use(express.static(__dirname+'/public'));
+
+app.use(cors());
 
 app.use(express.json());
 
