@@ -14,7 +14,7 @@ _Second you need configure database and migrate the tables_
 *Starting project with Node.JS in the Back-End & React.JS in the Front-End to create one redesocial simple*
 
 
-Author: 
+Authors: 
 - [@alandev2](https://github.com/alandev2) 
 - [@ojota-dev](https://github.com/ojota-dev)
 
