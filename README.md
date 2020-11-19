@@ -17,6 +17,8 @@ _Second you need configure database and migrate the tables_
 Author: 
 - [@alandev2](https://github.com/alandev2) 
 - [@ojota-dev](https://github.com/ojota-dev)
+
+
 *Tela de Autenticação*
 ![authenticate-example](https://github.com/alandev2/redesocial-simple/blob/main/images/auth.png)
 
