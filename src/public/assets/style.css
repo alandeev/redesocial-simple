@@ -68,7 +68,7 @@ body {
   padding: 20px;
   background: #202024;
   margin: 0 10px;
-  height: 90vh;
+  height: 85vh;
 }
 
 .section .feed {
@@ -295,8 +295,10 @@ body {
   }
 
   .section .container {
-    height: 40vh;
+    /* height: 40vh; */
     width: 90%;
+    /* min-height: 40vh; */
+    display: flex;
   }
 
   .section .feed {

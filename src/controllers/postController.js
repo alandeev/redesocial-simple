@@ -1,5 +1,6 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
+const ms = require('ms')
 
 module.exports = {
   async get_all_posts(req, res){
@@ -10,7 +11,16 @@ module.exports = {
         attributes: ['id', 'name', 'photo']
       }
     });
-    res.json(posts.reverse());
+
+    const new_array = posts.map(post => {
+      const { id, user, content, createdAt } = post.dataValues;
+      console.log({id, user, content, createdAt});
+      const date_now = new Date().getTime()
+      const postedIn = ms(date_now-createdAt.getTime(), { long: true });
+      return { id, user, content, createdAt: postedIn };
+    })
+    // console.log(new_array);
+    res.json(new_array.reverse());
   },
   async create_post(req, res){
     const { id: owner } = req.user;

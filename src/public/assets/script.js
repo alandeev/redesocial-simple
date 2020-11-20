@@ -6,6 +6,28 @@ const api = axios.create({
   baseURL: '/api/'
 })
 
+function addLastUser({ id, name, createdAt, photo }){
+
+  const divCardProfile = document.createElement('div');
+  divCardProfile.className = 'card profile';
+
+  const divUser = document.createElement('div');
+  divUser.className = 'user';
+
+  const imgPhoto = document.createElement('img');
+  imgPhoto.src = photo ? photo : 'assets/perfil.png';
+  
+  const p = document.createElement('p');
+  p.textContent = name
+
+  divUser.appendChild(imgPhoto);
+  divUser.appendChild(p);
+
+  divCardProfile.appendChild(divUser);
+
+  $(".users").append(divCardProfile);
+}
+
 function addPost({ user, title, content, createdAt }){
   // if(!id )
   const { name, id, photo } = user;
@@ -36,8 +58,6 @@ function addPost({ user, title, content, createdAt }){
   //divfield_1 Ok
   divField_1.appendChild(divUserinfo)
   divField_1.appendChild(pTitle);
-
-  console.log(divField_1)
 
   const divField_2 = document.createElement('div')
   divField_2.className = 'field-2';
@@ -99,10 +119,18 @@ function exit(){
       }
     })).data
 
-    if(posts.length == 0)
-      return console.log({ error: "NOT HAVE POSTS" });
+    if(posts.length > 0)
+      posts.forEach(post => addPost(post));
 
-    posts.forEach(post => addPost(post));
+    const lastuserscreated = (await api.get('user/all?filter=lastuserscreated', {
+      headers: {
+        authorization
+      }
+    })).data
+
+
+    if(lastuserscreated.length > 0)
+     lastuserscreated.forEach(user => addLastUser(user));
 
   }catch(err){
     console.log({ error: err.message });

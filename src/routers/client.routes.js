@@ -9,5 +9,6 @@ const routes = Router();
 routes.use(middleware);
 
 routes.get('/', clientController.index);
+routes.get('/all', clientController.getAll);
 
 module.exports = routes;
