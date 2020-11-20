@@ -16,17 +16,28 @@ function addPost({ user, title, content, createdAt }){
   const divField_1 = document.createElement('div')
   divField_1.className = 'field-1'
 
+  const divUserinfo = document.createElement('div');
+  divUserinfo.className = 'user-info';
+
+  const imgProfile = document.createElement('img');
+  imgProfile.src = photo ? photo : 'assets/perfil.png';
+
   const pFullname = document.createElement('p');
   pFullname.className = 'fullname';
   pFullname.textContent = name;
 
+  divUserinfo.appendChild(imgProfile)
+  divUserinfo.appendChild(pFullname)
+
   const pTitle = document.createElement('p');
   pTitle.className = 'title';
-  pTitle.textContent = title;
+  pTitle.textContent = createdAt;
 
   //divfield_1 Ok
-  divField_1.appendChild(pFullname)
+  divField_1.appendChild(divUserinfo)
   divField_1.appendChild(pTitle);
+
+  console.log(divField_1)
 
   const divField_2 = document.createElement('div')
   divField_2.className = 'field-2';
