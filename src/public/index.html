@@ -12,7 +12,7 @@
   <script>
     (function () {
       const token = localStorage.getItem('authorization');
-      // if(!token) return window.location.replace('/auth');
+      if(!token) return window.location.replace('/auth');
     })()
   </script>
 </head>
