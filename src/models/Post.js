@@ -4,7 +4,6 @@ class Post extends Model{
   static init(sequelize){
     super.init({
       owner: DataTypes.INTEGER,
-      title: DataTypes.STRING,
       content: DataTypes.STRING
     }, {
       sequelize

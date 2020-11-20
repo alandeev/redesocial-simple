@@ -6,30 +6,63 @@
   <link rel="stylesheet" href="./assets/reset.css">
   <link rel="stylesheet" href="./assets/style.css">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title>Home | Rede Social</title>
   <script>
     (function () {
       const token = localStorage.getItem('authorization');
-      if(!token) return window.location.replace('/auth');
-      console.log("USUARIO CONECTADO");
+      // if(!token) return window.location.replace('/auth');
     })()
   </script>
 </head>
 <body>
   <header class="header">
     <div class="logo">
-      <h1>Rede Social</h1>
+      <h1>Home</h1>
     </div>
     <nav class="nav">
       <ul class="navList">
         <li>
-          <button onclick="javascript:exit()">X</button>
+          <button onclick="javascript:exit()">Sair</button>
         </li>
       </ul>
     </nav>
   </header>
   <section class="section">
-    <h1>MANUTENÇAO</h1>
+    <div class="container">
+      <h1></h1>
+    </div>
+    <div class="feed">
+      <div class="box_form">
+        <form class="form_search">
+          <div class="input item">
+            <label for="content">Criar Publicação</label>
+            <textarea class="field-input" placeholder="Digite o que está pensando..." name="content" id="content" cols="30" rows="5"></textarea>
+          </div>
+          <div class="options item">
+            <button type="button" id="clearButton">Limpar</button>
+            <button type="submit">Postar</button>
+          </div>
+        </form>
+      </div>
+      <div class="posts">
+      <!-- EXAMPLE POST  
+        <div class="post">
+          <div class="field-1">
+            <p class="fullname">FullName</p>
+            <p class="title">Title</p>
+          </div>
+          <div class="field-2">
+            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptate unde facere cupiditate. Incidunt, corrupti beatae repudiandae ducimus minus velit perspiciatis quasi recusandae? Tempore laboriosam cum esse dolor enim dolorum?</p>
+          </div>
+        </div> 
+        -->
+      </div>
+    </div>
+    <div class="container">
+      <h1></h1>
+    </div>
   </section>
   <script src="assets/script.js"></script>
 </body>

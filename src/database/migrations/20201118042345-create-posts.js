@@ -17,7 +17,6 @@ module.exports = {
         onDelete: 'CASCADE',
         allowNull: false
       },
-      title: DataTypes.STRING,
       content: DataTypes.STRING,
       created_at: DataTypes.DATE,
       updated_at: DataTypes.DATE
