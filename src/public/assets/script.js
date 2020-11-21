@@ -6,9 +6,27 @@ const api = axios.create({
   baseURL: '/api/'
 })
 
+$("#form_search_user")[0].addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const key_value = $("#search_key").val();
+  if(!key_value) return;
+
+  const posts = (await api.get(`/user/posts/filter?type=searchkey&key=${key_value}`, {
+    headers: { authorization }
+  })).data
+
+  if(posts.length ==  0){
+    return alert("Nenhum contéudo encontrado com essa palavra!")
+  }
+
+  $(".posts")[0].textContent = ""
+  posts.forEach(post => addPost(post));
+  
+})
+
 //function add photo
-$('#add_photo')[0].addEventListener('click', async (event) => {
-  const url = prompt('Url da Imagem');
+$('#profile-image')[0].addEventListener('click', async (event) => {
+  const url = prompt('(URL DA IMAGEM) para trocar. Apenas [png, jpg, jpeg]');
   if(!url) return;
   try{
     const response = (await api.post('user/setphoto', {
@@ -194,12 +212,23 @@ function exit(){
 (async function(){
   localStorage.authorization
   try{
-    const user = await api.get('user', {
+    const user = (await api.get('user', {
       headers: {
         authorization
       }
-    })
-    
+    })).data
+
+    if(user.error){
+      localStorage.clear();
+      return window.location.replace('/auth');
+    }
+
+    const { name, photo } = user;
+    console.log({name, photo})
+    $("#profile-name")[0].textContent = name;
+    $("#profile-image")[0].src = photo ? photo : 'assets/perfil.png';
+    $("#profile-image")[0].onerror = () => ($("#profile-imaeg")[0].src = "assets/perfil.png")
+
     const posts = (await api.get('user/posts', {
       headers: {
         authorization

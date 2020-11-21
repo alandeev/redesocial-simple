@@ -77,9 +77,10 @@ body {
 }
 
 .section .tools-button .item{
+  background: #393940;
   border: none;
   border-radius: 4px;
-  background: #8257E5;
+  /* background: #8257E5; */
   transition: all 0.2s ease-in-out;
   color: #fff;
   padding: 10px 20px;
@@ -88,8 +89,10 @@ body {
 }
 
 .section .tools-button .item:hover{
-  color: rgba(255, 255, 255, 1);
+  background: #8257E5;
   box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+  /* color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4); */
 }
 
 .section .feed {
@@ -145,7 +148,7 @@ body {
 .section .feed .box_form .form_search .options button{
   border: none;
   border-radius: 4px;
-  background: #8257E5;
+  background: #393940;
   transition: all 0.2s ease-in-out;
   color: #fff;
   padding: 10px 30px;
@@ -153,8 +156,9 @@ body {
 }
 
 .section .feed .box_form .form_search .options button:hover{
-  color: rgba(255, 255, 255, 1);
+  /* color: rgba(255, 255, 255, 1); */
   box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+  background: #8257E5;
 }
 
 .section .feed .posts{
@@ -185,6 +189,10 @@ body {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
+}
+
+.section .feed .posts .post .field-1 .user-info .fullname{
+   font-weight: bold;
 }
 
 .section .feed .posts .post .field-1 .user-info img{
@@ -230,14 +238,40 @@ body {
 .section .feed .posts .post .field-3 p{ margin-right: 5px; }
 
 .container .title {
+  padding-bottom: 20px;
+  border-bottom: solid;
+  border-width: 0.01cm;
   align-items: center;
   display: flex;
-  justify-content: space-between;
   font-size: 1.8rem;
   margin-bottom: 30px;
+  opacity: 0.9;
 }
 
-.container .title a{
+.tools-container .title #profile-image {
+  cursor: pointer;
+  border-radius: 50px;
+  border: solid;
+  border-color: #f3f3f3; 
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+}
+
+.tools-container .title #profile-image:hover {
+  opacity: 0.5;
+}
+
+
+.tools-container .title #profile-name {
+  /* opacity: ; */
+}
+
+
+/* .container .title a{
   color: #aaa;
   text-decoration: none;
   padding: 5px 10px;
@@ -247,7 +281,7 @@ body {
   opacity: 0.4;
   transition: 0.2s;
   /* color: black; */
-}
+/* }  */
 
 .container .users{
   align-items: center;

@@ -10,6 +10,7 @@ const routes = Router();
 routes.use(middleware);
 
 routes.get('/', postController.get_all_posts);
+routes.get('/filter', postController.get_all_posts_and_filter);
 routes.post('/', postController.create_post);
 
 //actions in the post!

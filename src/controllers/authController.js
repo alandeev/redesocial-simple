@@ -46,8 +46,8 @@ module.exports = {
       return res.status(401).json({ error: "Senha não enviada ou tipo invalido" });
     }
 
-    if(!name || typeof(name) !== "string"){
-      return res.status(401).json({ error: "Nome não enviado ou tipo invalido" });
+    if(!name || typeof(name) !== "string" || name.length > 20){
+      return res.status(401).json({ error: "Nome não enviado, tipo invalido ou passou de 20 caracteres" });
     }
 
     const findUserSameEmail = await User.findOne({

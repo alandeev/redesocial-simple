@@ -4,6 +4,10 @@ const Like = require('../models/Like');
 
 const ms = require('ms')
 
+const filtersPost = {
+  "searchkey": (posts, key) => posts.filter(post => post.content.match(new RegExp(key, 'ig')) || post.user.name.match(new RegExp(key, 'ig')))
+}
+
 const convertTime = {
   'hour' : 'hora',
   'hours': 'horas',
@@ -22,6 +26,39 @@ const convertTime = {
 }
 
 module.exports = {
+  async get_all_posts_and_filter(req, res){
+    const { type, key } = req.query;
+    if(!type || !key || key.length == 0)
+      return res.status(400).send({ error: "Você enviou a 'query' ou a 'key' incorreamente."});
+
+    const findFilter = filtersPost[type];
+    if(!findFilter)
+      return res.status(400).send({ error: "Tipo de filtro não encontrado" });
+
+    const posts = (await Post.findAll({
+      include: [{
+        model: User,
+        as: "user",
+        attributes: ['id', 'name', 'photo']
+      },{
+        model: Like,
+        as: "likes",
+        attributes: ['id', 'post_id', 'user_id']
+      }]
+    })).sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1));
+
+    const new_array = posts.map(post => {
+      const { id, user, content, createdAt, likes } = post.dataValues;
+      const date_now = new Date().getTime()
+      const postedIn = ms(date_now-createdAt.getTime(), { long: true });
+      const [ time, name ] = postedIn.split(' ');
+      const name_converted = convertTime[name];
+
+      return { id, user, content, createdAt: `${time} ${name_converted}`, likes };
+    }).reverse()
+
+    res.json(findFilter(new_array, key));
+  },
   async get_all_posts(req, res){
     const posts = (await Post.findAll({
       include: [{
