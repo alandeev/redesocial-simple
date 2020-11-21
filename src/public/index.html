@@ -17,94 +17,99 @@
   </script>
 </head>
 <body>
-  <header class="header">
-    <div class="logo">
-      <a href="">Coffe</a>
-    </div>
-    <nav class="nav">
-      <ul class="navList">
-        <li>
-          <button onclick="javascript:exit()">Sair</button>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <section class="section">
-    <div class="container tools-container">
-      <div class="title">
-        <img src="" alt="" id="profile-image">
-        <h2 id="profile-name">Carregando...</h2>
+  <div class="loading">
+    <img src="assets/loader.gif" alt="">
+  </div>
+  <div class="app" style="display: none;">
+    <header class="header">
+      <div class="logo">
+        <a href="">Coffe</a>
       </div>
-      <div class="form_search_user">
-        <form class="form_search_user" id="form_search_user" action="">
-          <div class="field">
-            <i class="fa fa-search"></i>
-            <input placeholder="Search 'username' or 'keyword'." type="text" name="search_key" id="search_key" autocomplete="off">
-          </div>
-          <button type="submit"></button>
-        </form>
-      </div>
-      <div class="tools-button">
-        <!-- <button class="item" id="add_photo">Add Foto</button>
-        <button class="item" id="">Em breve</button>
-        <button class="item" id="">Em breve</button> -->
-      </div>
-    </div>
-    <div class="feed">
-      <div class="box_form">
-        <form class="form_search">
-          <div class="input item">
-            <label for="content">Criar Publicação</label>
-            <textarea class="field-input" placeholder="Digite o que está pensando..." name="content" id="content" cols="30" rows="5"></textarea>
-          </div>
-          <div class="options item">
-            <button type="button" id="clearButton">Limpar</button>
-            <button type="submit">Postar</button>
-          </div>
-        </form>
-      </div>
-      <div class="posts">
-      <!-- EXAMPLE POST  
-        <div class="post">
-          <div class="field-1">
-            <div class="user-info">
-              <img src="https://cdn.discordapp.com/avatars/348606777933168641/cdbf2f59e29f8d20ab4b0fda15c18823.webp?size=128" alt="">
-              <p class="fullname">FullName</p>
+      <nav class="nav">
+        <ul class="navList">
+          <li>
+            <button onclick="javascript:exit()">Sair</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section class="section">
+      <div class="container tools-container">
+        <div class="title">
+          <img src="" alt="" id="profile-image">
+          <h2 id="profile-name">Carregando...</h2>
+        </div>
+        <div class="form_search_user">
+          <form class="form_search_user" id="form_search_user" action="">
+            <div class="field">
+              <i class="fa fa-search"></i>
+              <input placeholder="Search 'username' or 'keyword'." type="text" name="search_key" id="search_key" autocomplete="off">
             </div>
-            <p class="title">Title</p>
-          </div>
-          <div class="field-2">
-            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptate unde facere cupiditate. Incidunt, corrupti beatae repudiandae ducimus minus velit perspiciatis quasi recusandae? Tempore laboriosam cum esse dolor enim dolorum?</p>
-          </div>
-          <div class="field-3">
-            <div class="likes">
-              <p class="like_count">3</p>
-              <p>curtidas.</p>
+            <button type="submit"></button>
+          </form>
+        </div>
+        <div class="tools-button">
+          <!-- <button class="item" id="add_photo">Add Foto</button>
+          <button class="item" id="">Em breve</button>
+          <button class="item" id="">Em breve</button> -->
+        </div>
+      </div>
+      <div class="feed">
+        <div class="box_form">
+          <form class="form_search">
+            <div class="input item">
+              <label for="content">Criar Publicação</label>
+              <textarea class="field-input" placeholder="Digite o que está pensando..." name="content" id="content" cols="30" rows="5"></textarea>
             </div>
-            <div class="buttonsliked">
-              <button class="likedbutton"><i class="far fa-thumbs-up"></i></button>
-              <button class="likedbutton"><i class="far fa-thumbs-up"></i></button>
+            <div class="options item">
+              <button type="button" id="clearButton">Limpar</button>
+              <button type="submit">Postar</button>
             </div>
-          </div>
-        </div> 
-      -->   
+          </form>
+        </div>
+        <div class="posts">
+        <!-- EXAMPLE POST  
+          <div class="post">
+            <div class="field-1">
+              <div class="user-info">
+                <img src="https://cdn.discordapp.com/avatars/348606777933168641/cdbf2f59e29f8d20ab4b0fda15c18823.webp?size=128" alt="">
+                <p class="fullname">FullName</p>
+              </div>
+              <p class="title">Title</p>
+            </div>
+            <div class="field-2">
+              <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptate unde facere cupiditate. Incidunt, corrupti beatae repudiandae ducimus minus velit perspiciatis quasi recusandae? Tempore laboriosam cum esse dolor enim dolorum?</p>
+            </div>
+            <div class="field-3">
+              <div class="likes">
+                <p class="like_count">3</p>
+                <p>curtidas.</p>
+              </div>
+              <div class="buttonsliked">
+                <button class="likedbutton"><i class="far fa-thumbs-up"></i></button>
+                <button class="likedbutton"><i class="far fa-thumbs-up"></i></button>
+              </div>
+            </div>
+          </div> 
+        -->   
+        </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="title">
-        <h2>Ultimos usuários cadastrados</h2>
+      <div class="container">
+        <div class="title">
+          <h2>Ultimos usuários cadastrados</h2>
+        </div>
+        <div class="users">
+          <!-- EXEMPLO DE PERFIL 
+          <div class="card profile">
+            <div class="user">
+              <img src="https://cdn.discordapp.com/avatars/348606777933168641/cdbf2f59e29f8d20ab4b0fda15c18823.webp?size=128" alt=""> 
+              <p>Pedro Afonso</p>
+            </div>
+          </div> -->
+        </div>
       </div>
-      <div class="users">
-        <!-- EXEMPLO DE PERFIL 
-        <div class="card profile">
-          <div class="user">
-            <img src="https://cdn.discordapp.com/avatars/348606777933168641/cdbf2f59e29f8d20ab4b0fda15c18823.webp?size=128" alt=""> 
-            <p>Pedro Afonso</p>
-          </div>
-        </div> -->
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
   <script src="assets/script.js"></script>
 </body>
 </html>

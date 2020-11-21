@@ -6,6 +6,16 @@ const api = axios.create({
   baseURL: '/api/'
 })
 
+const setLoader = (action) => {
+  if(action){
+    $(".loading")[0].style.display = 'flex';
+    $(".app")[0].style.display = 'none';
+  }else{
+    $(".loading")[0].style.display = 'none';
+    $(".app")[0].style.display = 'flex';
+  }
+}
+
 $("#form_search_user")[0].addEventListener('submit', async (event) => {
   event.preventDefault();
   const key_value = $("#search_key").val();
@@ -41,6 +51,10 @@ $('#profile-image')[0].addEventListener('click', async (event) => {
     alert(response.data.error)
   }
 })
+
+function sleep(seconds){
+  return new Promise(resolve => setTimeout(resolve, seconds*1000));
+}
 
 function addLike(action, prop){
   if(action == true){
@@ -246,8 +260,10 @@ function exit(){
 
 
     if(lastuserscreated.length > 0)
-     lastuserscreated.forEach(user => addLastUser(user));
+       lastuserscreated.forEach(user => addLastUser(user));
 
+    await sleep(3);
+    setLoader(false);
   }catch(err){
     console.log({ error: err.message });
   }
