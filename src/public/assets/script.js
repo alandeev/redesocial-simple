@@ -6,6 +6,24 @@ const api = axios.create({
   baseURL: '/api/'
 })
 
+//function add photo
+$('#add_photo')[0].addEventListener('click', async (event) => {
+  const url = prompt('Url da Imagem');
+  if(!url) return;
+  try{
+    const response = (await api.post('user/setphoto', {
+      url
+    }, {
+      headers: { authorization }
+    })).data;
+
+    if(response.success)
+      return window.location.reload();
+  }catch({ response }){
+    alert(response.data.error)
+  }
+})
+
 function addLike(action, prop){
   if(action == true){
     console.log({action, prop})
@@ -48,6 +66,8 @@ function addLastUser({ id, name, createdAt, photo }){
 
   const imgPhoto = document.createElement('img');
   imgPhoto.src = photo ? photo : 'assets/perfil.png';
+  imgPhoto.src = photo ? photo : 'assets/perfil.png';
+  imgPhoto.onerror = () => (imgPhoto.src = 'assets/perfil.png')
   
   const p = document.createElement('p');
   p.textContent = name
@@ -74,6 +94,7 @@ function addPost({ id, user, title, content, createdAt, likes }){
 
   const imgProfile = document.createElement('img');
   imgProfile.src = photo ? photo : 'assets/perfil.png';
+  imgProfile.onerror = () => (imgProfile.src = 'assets/perfil.png')
 
   const pFullname = document.createElement('p');
   pFullname.className = 'fullname';

@@ -28,5 +28,27 @@ module.exports = {
 
     const users_filted = exec(users);
     res.json(users_filted);
+  },
+
+  //characters | / 
+
+  async setPhotoProfile(req, res){
+    const { id } = req.user;
+    const { url } = req.body;
+
+    const validators = /\.(jpe?g|png|gif)$/gi
+
+    if(!url || url.length < 10 || !validators.test(url) || !url.includes('http')){
+      return res.status(400).send({ error: "Url de foto invalida" });
+    }
+
+    const user = await User.findByPk(id);
+    if(!user)
+     return res.status(404).json({ error: "Usuario não encontrado" });
+
+    user.photo = url;
+    await user.save();
+
+    return res.json({ success: "Foto de perfil alterada com sucesso!" });
   }
 }

@@ -10,5 +10,6 @@ routes.use(middleware);
 
 routes.get('/', clientController.index);
 routes.get('/all', clientController.getAll);
+routes.post('/setphoto', clientController.setPhotoProfile);
 
 module.exports = routes;

@@ -23,7 +23,7 @@ const convertTime = {
 
 module.exports = {
   async get_all_posts(req, res){
-    const posts = await Post.findAll({
+    const posts = (await Post.findAll({
       include: [{
         model: User,
         as: "user",
@@ -33,7 +33,7 @@ module.exports = {
         as: "likes",
         attributes: ['id', 'post_id', 'user_id']
       }]
-    });
+    })).sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1));
 
     const new_array = posts.map(post => {
       const { id, user, content, createdAt, likes } = post.dataValues;
@@ -43,7 +43,7 @@ module.exports = {
       const name_converted = convertTime[name];
 
       return { id, user, content, createdAt: `${time} ${name_converted}`, likes };
-    })
+    }).reverse()
 
     res.json(new_array);
   },
