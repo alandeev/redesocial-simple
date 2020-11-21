@@ -6,6 +6,38 @@ const api = axios.create({
   baseURL: '/api/'
 })
 
+function addLike(action, prop){
+  if(action == true){
+    console.log({action, prop})
+  }else{
+    console.log({action, prop})
+  }
+}
+
+async function actionliked(action, post_id){
+  if(!action ||!post_id)
+   return;
+  
+  try{
+    const response = (await api.get(`user/posts/${post_id}/${action}`, {
+      headers: { authorization }
+    })).data
+
+    if(response.error)
+      return alert(response.error)
+
+    const element = $(`#likes_id_${post_id}`)[0];
+    const number = parseInt(element.textContent);
+    const new_number = action == 'like' ? number+1 : number-1;
+    if(new_number >= 0)
+      return element.textContent = new_number;
+    return console.log({ error: "Erro ao tentar setar novo like" })
+  }catch({ response }){
+    const { data } = response;
+    return alert(data.error);
+  }
+}
+
 function addLastUser({ id, name, createdAt, photo }){
 
   const divCardProfile = document.createElement('div');
@@ -28,9 +60,8 @@ function addLastUser({ id, name, createdAt, photo }){
   $(".users").append(divCardProfile);
 }
 
-function addPost({ user, title, content, createdAt }){
-  // if(!id )
-  const { name, id, photo } = user;
+function addPost({ id, user, title, content, createdAt, likes }){
+  const { name, photo } = user;
 
   const postDiv = document.createElement('div')
   postDiv.className = "post";
@@ -68,8 +99,43 @@ function addPost({ user, title, content, createdAt }){
 
   divField_2.appendChild(pDescription);
 
+  const divField_3 = document.createElement('div');
+  divField_3.className = "field-3";
+
+  const divLikes = document.createElement('div');
+  divLikes.className = 'likes';
+
+  const pLikes = document.createElement('p');
+  pLikes.id = `likes_id_${id}`;
+  pLikes.className = 'like_count';
+  pLikes.textContent = likes.length;
+
+  const textLikeds = document.createElement('p');
+  textLikeds.textContent = 'curtidas';
+
+  divLikes.appendChild(pLikes)
+  divLikes.appendChild(textLikeds);
+
+  const divButtonsliked = document.createElement('div');
+  divButtonsliked.className = 'buttonsliked';
+
+  const buttonLiked = document.createElement('button');
+  buttonLiked.className = 'buttonlike likedbutton far fa-thumbs-up';
+  buttonLiked.onclick = () => actionliked('like', id)
+
+  const buttonUnliked = document.createElement('button');
+  buttonUnliked.className = 'buttonlike unlikedbutton far fa-thumbs-down';
+  buttonUnliked.onclick = () => actionliked('unlike', id)
+
+  divButtonsliked.appendChild(buttonLiked)
+  divButtonsliked.appendChild(buttonUnliked);
+
+  divField_3.appendChild(divLikes);
+  divField_3.appendChild(divButtonsliked);
+
   postDiv.appendChild(divField_1)
   postDiv.appendChild(divField_2)
+  postDiv.appendChild(divField_3)
 
   document.getElementsByClassName("posts")[0].appendChild(postDiv);
 }

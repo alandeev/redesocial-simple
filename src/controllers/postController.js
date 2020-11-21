@@ -1,5 +1,7 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
+const Like = require('../models/Like');
+
 const ms = require('ms')
 
 const convertTime = {
@@ -22,24 +24,28 @@ const convertTime = {
 module.exports = {
   async get_all_posts(req, res){
     const posts = await Post.findAll({
-      include: {
+      include: [{
         model: User,
         as: "user",
         attributes: ['id', 'name', 'photo']
-      }
+      },{
+        model: Like,
+        as: "likes",
+        attributes: ['id', 'post_id', 'user_id']
+      }]
     });
 
     const new_array = posts.map(post => {
-      const { id, user, content, createdAt } = post.dataValues;
+      const { id, user, content, createdAt, likes } = post.dataValues;
       const date_now = new Date().getTime()
       const postedIn = ms(date_now-createdAt.getTime(), { long: true });
       const [ time, name ] = postedIn.split(' ');
       const name_converted = convertTime[name];
 
-      return { id, user, content, createdAt: `${time} ${name_converted}` };
+      return { id, user, content, createdAt: `${time} ${name_converted}`, likes };
     })
 
-    res.json(new_array.reverse());
+    res.json(new_array);
   },
   async create_post(req, res){
     const { id: owner } = req.user;
@@ -55,5 +61,9 @@ module.exports = {
     }catch(err){
       return res.status(400).send({ error: err.message });
     }
+  },
+  async getPost(req, res){
+    const { post_id } = req.params;
+    res.send("AINDA SENDO FEITO PARA RETORNA UM UNICO POST PELO ID");
   }
 }

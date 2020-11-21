@@ -175,6 +175,37 @@ body {
   margin-right: 10px;
 }
 
+.section .feed .posts .post .field-3{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  margin-top: 12px;
+  border-top: solid;
+  border-color: #202024;
+  border-width: 0.01cm;
+  align-items: center;
+}
+
+.section .feed .posts .post .field-3 .likes{
+  display: flex;
+  opacity: 0.3;
+}
+.section .feed .posts .post .field-3 .buttonlike{
+  color: #202024;
+  font-weight: bold;
+  outline-width: 0;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.section .feed .posts .post .field-3 .likedbutton:hover{ color: green; }
+
+.section .feed .posts .post .field-3 .unlikedbutton:hover{ color: tomato; }
+
+.section .feed .posts .post .field-3 p{ margin-right: 5px; }
+
 .container .title {
   align-items: center;
   display: flex;
