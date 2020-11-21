@@ -108,6 +108,7 @@ body {
   outline-width: 0;
   resize: none;
   font-size: 1.3rem;
+  border-radius: 6px;
 }
 
 .section .feed .box_form .form_search .field-input:focus{
@@ -122,6 +123,7 @@ body {
 
 .section .feed .box_form .form_search .options button{
   border: none;
+  border-radius: 4px;
   background: #8257E5;
   transition: all 0.2s ease-in-out;
   color: #fff;
@@ -204,11 +206,11 @@ body {
   display: flex;
   height: 50px;
   border-radius: 50px;
-  background: #8257E5;
+  background: #393940;
 }
 
 .container .users .card:hover { 
-  background: #393940;
+  background: #8257E5;
   /* color: black; */
   transition: 0.1s;
 }
@@ -224,7 +226,6 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
-  /* justify-content: space-between; */
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -288,16 +289,16 @@ body {
 
 
 
-@media(max-width: 1000px){
+@media(max-width: 1300px){
+  .section .feed .posts .post .field-1 .user-info img{ height: 55px; }
   .section {
     align-items: center;
     flex-direction: column;
   }
 
   .section .container {
-    /* height: 40vh; */
+    height: auto;
     width: 90%;
-    /* min-height: 40vh; */
     display: flex;
   }
 

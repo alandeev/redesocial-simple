@@ -15,10 +15,9 @@ module.exports = {
     const { name, id } = req.user;
     return res.send({ name, id });
   },
-
+  
   async getAll(req, res){
     const { filter } = req.query;
-    console.log(filter);
     const { exec } = filters.find(f => f.name == filter);
     if(!exec) return res.status(400).json({ error: "Filtro não encontrado!" });
 

@@ -81,17 +81,17 @@ $(".form_search")[0].addEventListener('submit', async (event) => {
     if(!value) return console.log("NAO TEM CONTENT");
   
     try{
-    const create = await api.post('/user/posts', {
-        content: value
-      }, {
-        headers: { authorization }
-      }
-    );
+      const create = await api.post('/user/posts', {
+          content: value
+        }, {
+          headers: { authorization }
+        }
+      );
 
-    window.location.reload();
+      window.location.reload();
 
-    }catch({ data }){
-      return console.log({ error: data.error }); 
+    }catch(err){
+      return alert("Você enviou um conteúdo incorreto.");
     }  
   }
 );
