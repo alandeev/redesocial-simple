@@ -28,7 +28,7 @@ function openmedia(media){
     let email = emailElement.value;
     let password = passwordElement.value;
 
-    if(!email || !password) return console.log("Falta enviar email e senha");
+    if(!email || !password) return setMessage("Falta enviar o Email/Senha", "#FFBABA");
 
     try{
       const { data } = await axios.post("/api/authenticate", { email, password });
