@@ -189,11 +189,13 @@ body {
 
 .section .feed .posts .post .field-1 .user-info img{
   border-radius: 50px;
-  background-size: 100% 100%;
+  width: 70px;
+  height: 70px;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  max-height: 70px;
-  margin-right: 10px;
+  border: solid;
+  margin-right: 15px;
 }
 
 .section .feed .posts .post .field-3{
@@ -289,7 +291,8 @@ body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100%;
+  width: 48px;
+  height: 48px;
   margin-right: 10px;
 }
 
@@ -342,7 +345,7 @@ body {
 
 
 @media(max-width: 1300px){
-  .section .feed .posts .post .field-1 .user-info img{ height: 55px; }
+  .section .feed .posts .post .field-1 .user-info img{ height: 55px; width: 55px;}
   .section {
     align-items: center;
     flex-direction: column;

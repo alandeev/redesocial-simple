@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 const filters = [{
     name: "lastuserscreated",
-    exec: (users) => users.slice(0, 10)
+    exec: (users) => users.slice(0, 5)
   }, {
     name: "topposts",
     exec: (users) => users.filter(post => post) //exemplo de json que filtra
