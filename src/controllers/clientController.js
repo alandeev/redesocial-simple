@@ -40,7 +40,7 @@ module.exports = {
     const { id } = req.user;
     const { url } = req.body;
 
-    const validators = /\.(jpe?g|png|gif)$/gi
+    const validators = /\.(jpe?g|png|gif|webp)$/gi
 
     if(!url || url.length < 10 || !validators.test(url) || !url.includes('http')){
       return res.status(400).send({ error: "Url de foto invalida" });

@@ -262,9 +262,10 @@ function exit(){
     if(lastuserscreated.length > 0)
        lastuserscreated.forEach(user => addLastUser(user));
 
-    await sleep(3);
+    await sleep(1);
     setLoader(false);
   }catch(err){
-    console.log({ error: err.message });
+    localStorage.clear();
+    return window.location.replace('/auth');
   }
 })()

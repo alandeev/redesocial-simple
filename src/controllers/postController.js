@@ -53,8 +53,9 @@ module.exports = {
       const postedIn = ms(date_now-createdAt.getTime(), { long: true });
       const [ time, name ] = postedIn.split(' ');
       const name_converted = convertTime[name];
+      const createdtoSend =  name_converted ? `${time} ${name_converted}` : 'Agora';
 
-      return { id, user, content, createdAt: `${time} ${name_converted}`, likes };
+      return { id, user, content, createdAt: createdtoSend, likes };
     }).reverse()
 
     res.json(findFilter(new_array, key));
@@ -78,8 +79,9 @@ module.exports = {
       const postedIn = ms(date_now-createdAt.getTime(), { long: true });
       const [ time, name ] = postedIn.split(' ');
       const name_converted = convertTime[name];
+      const createdtoSend =  name_converted ? `${time} ${name_converted}` : 'agora';
 
-      return { id, user, content, createdAt: `${time} ${name_converted}`, likes };
+      return { id, user, content, createdAt: createdtoSend, likes };
     }).reverse()
 
     res.json(new_array);
