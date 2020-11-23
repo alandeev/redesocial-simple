@@ -20,7 +20,11 @@ const Comment = require('../models/Comment');
         return res.status(400).json({ error: "conteúdo enviado incorretamente." });
       }
 
-      const comment = await Comment.create({ content, user_id, post_id })
-      res.json(comment);
+      try{
+        const comment = await Comment.create({ content, user_id, post_id })
+        res.json(comment);
+      }catch(err){
+        res.json({ error: err.message });
+      }  
     }
   }

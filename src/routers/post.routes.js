@@ -21,4 +21,6 @@ routes.get('/:post_id/unlike', likeController.rem_like);
 
 routes.post('/:post_id/comment', commentController.addComment);
 
+// routes.delete('/:post_id/:comment_id', commentController.addComment);
+
 module.exports = routes;

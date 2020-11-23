@@ -1,6 +1,7 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
 const Like = require('../models/Like');
+const Comment = require('../models/Comment');
 
 const ms = require('ms')
 
@@ -44,18 +45,22 @@ module.exports = {
         model: Like,
         as: "likes",
         attributes: ['id', 'post_id', 'user_id']
+      },{
+        model: Comment,
+        as: "comments",
+        attributes: ['user_id', 'post_id', 'content']
       }]
     })).sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1));
 
     const new_array = posts.map(post => {
-      const { id, user, content, createdAt, likes } = post.dataValues;
+      const { id, user, content, createdAt, likes, comments } = post.dataValues;
       const date_now = new Date().getTime()
       const postedIn = ms(date_now-createdAt.getTime(), { long: true });
       const [ time, name ] = postedIn.split(' ');
       const name_converted = convertTime[name];
       const createdtoSend =  name_converted ? `${time} ${name_converted}` : 'Agora';
 
-      return { id, user, content, createdAt: createdtoSend, likes };
+      return { id, user, content, createdAt: createdtoSend, likes, comments };
     }).reverse()
 
     res.json(findFilter(new_array, key));
@@ -70,18 +75,22 @@ module.exports = {
         model: Like,
         as: "likes",
         attributes: ['id', 'post_id', 'user_id']
+      },{
+        model: Comment,
+        as: "comments",
+        attributes: ['user_id', 'post_id', 'content']
       }]
     })).sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1));
 
     const new_array = posts.map(post => {
-      const { id, user, content, createdAt, likes } = post.dataValues;
+      const { id, user, content, createdAt, likes, comments } = post.dataValues;
       const date_now = new Date().getTime()
       const postedIn = ms(date_now-createdAt.getTime(), { long: true });
       const [ time, name ] = postedIn.split(' ');
       const name_converted = convertTime[name];
-      const createdtoSend =  name_converted ? `${time} ${name_converted}` : 'agora';
+      const createdtoSend =  name_converted ? `${time} ${name_converted}` : ' agora';
 
-      return { id, user, content, createdAt: createdtoSend, likes };
+      return { id, user, content, createdAt: createdtoSend, likes, comments };
     }).reverse()
 
     res.json(new_array);
