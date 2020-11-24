@@ -6,6 +6,8 @@ const modal = $(".modal")[0];
 
 const post_comments = $(".comments")[0];
 
+let post_id_opened = false;
+
 const api = axios.create({
   baseURL: '/api/'
 })
@@ -146,9 +148,34 @@ function createComment({ content, createdAt, owner }){
   return liCommentCard;
 }
 
-openPost(4);
+// openPost(4);
+
+async function handleAddComment(event){
+  event.preventDefault();
+
+  if(!post_id_opened) return;
+
+  const [ inputComment ] = $("#comment-value");
+  if(!inputComment.value) return;
+
+  try{
+    let comment = (await api.post(`user/posts/${post_id_opened}/comment`, {
+      content: inputComment.value
+    }, {
+      headers: { authorization }
+    })).data
+
+    modal.style.display = 'none'
+    openPost(post_id_opened);
+  }catch(err){
+    console.log({ error: err.message })
+  }
+}
+
+$("#form-add-comment")[0].addEventListener('submit', handleAddComment);
 
 async function openPost(post_id){
+  post_id_opened = post_id;
   const post = (await api.get(`user/posts/${post_id}`, {
     headers: { authorization }
   })).data
