@@ -85,6 +85,9 @@ async function actionliked(action, post_id){
     const element = $(`#likes_id_${post_id}`)[0];
     const number = parseInt(element.textContent);
     const new_number = action == 'like' ? number+1 : number-1;
+    $('.modal')[0].style.display = 'none'
+    openPost(post_id);
+    
     if(new_number >= 0)
       return element.textContent = new_number;
     return console.log({ error: "Erro ao tentar setar novo like" })
@@ -167,6 +170,7 @@ async function handleAddComment(event){
 
     modal.style.display = 'none'
     openPost(post_id_opened);
+    inputComment.value = "";
   }catch(err){
     console.log({ error: err.message })
   }
@@ -175,6 +179,7 @@ async function handleAddComment(event){
 $("#form-add-comment")[0].addEventListener('submit', handleAddComment);
 
 async function openPost(post_id){
+  // modal.style.display = 'none'
   post_id_opened = post_id;
   const post = (await api.get(`user/posts/${post_id}`, {
     headers: { authorization }
@@ -194,6 +199,10 @@ async function openPost(post_id){
   const [ post_count_likes ] = $("#post-comment-likes")
 
   const [ post_comment_createdAt ] = $("#post-comment-createdAt");
+
+  $(".likedbutton")[0].onclick = () => actionliked('like', post_id);
+  $(".unlikedbutton")[0].onclick = () => actionliked('unlike', post_id);
+  
 
   //setting time in the create post
   post_comment_createdAt.textContent = post.createdAt;
@@ -282,17 +291,17 @@ function addPost({ id, user, content, createdAt, likes, comments }){
   const divButtonsliked = document.createElement('div');
   divButtonsliked.className = 'buttonsliked';
 
-  const buttonLiked = document.createElement('button');
-  buttonLiked.className = 'buttonlike likedbutton far fa-thumbs-up';
-  buttonLiked.onclick = () => actionliked('like', id)
+  // const buttonLiked = document.createElement('button');
+  // buttonLiked.className = 'buttonlike likedbutton far fa-thumbs-up';
+  // buttonLiked.onclick = () => actionliked('like', id)
 
-  const buttonUnliked = document.createElement('button');
-  buttonUnliked.className = 'buttonlike unlikedbutton far fa-thumbs-down';
-  buttonUnliked.onclick = () => actionliked('unlike', id)
+  // const buttonUnliked = document.createElement('button');
+  // buttonUnliked.className = 'buttonlike unlikedbutton far fa-thumbs-down';
+  // buttonUnliked.onclick = () => actionliked('unlike', id)
 
   divButtonsliked.append(divLikes);
-  divButtonsliked.appendChild(buttonLiked)
-  divButtonsliked.appendChild(buttonUnliked);
+  // divButtonsliked.appendChild(buttonLiked)
+  // divButtonsliked.appendChild(buttonUnliked);
 
   const divComment = document.createElement('div');
   divComment.className = 'comments';
