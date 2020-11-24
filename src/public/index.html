@@ -17,6 +17,32 @@
   </script>
 </head>
 <body>
+  <div id="commentsModal" class="modal">
+    <div class="modal-content">
+      <div class="field details">
+        <div class="user-info">
+          <div class="user">
+            <img id="post-comment-photo" src="assets/loader.gif" onerror="" alt="">
+            <p id="post-comment-fullname"></p>
+          </div>
+          <p id="post-comment-createdAt"></p>
+        </div>
+        <div class="field post-info">
+          <p id="post-comment-content"></p>
+          <p id="post-comment-likes"></p>
+        </div>
+      </div>
+      <div class="field field-comments">
+        <h3 style="color: white;">Comentarios</h3>
+        <ul class="comments">
+        </ul>
+        <form id="form-add-comment">
+          <input type="text" id="comment-value" placeholder="Digite um comentario...">
+          <button type="submit" style="display: none;"></button>
+        </form>
+      </div>
+    </div>
+  </div>
   <div class="loading">
     <img src="assets/loader.gif" alt="">
   </div>
@@ -68,7 +94,7 @@
           </form>
         </div>
         <div class="posts">
-        <!-- EXAMPLE POST  
+        <!-- EXAMPLE POST
           <div class="post">
             <div class="field-1">
               <div class="user-info">
@@ -81,17 +107,20 @@
               <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptate unde facere cupiditate. Incidunt, corrupti beatae repudiandae ducimus minus velit perspiciatis quasi recusandae? Tempore laboriosam cum esse dolor enim dolorum?</p>
             </div>
             <div class="field-3">
-              <div class="likes">
-                <p class="like_count">3</p>
-                <p>curtidas.</p>
+              <div class="comments">
+                <button>comentarios</button>
               </div>
               <div class="buttonsliked">
-                <button class="likedbutton"><i class="far fa-thumbs-up"></i></button>
-                <button class="likedbutton"><i class="far fa-thumbs-up"></i></button>
+                <div class="likes">
+                  <p class="like_count">3</p>
+                  <p>curtidas</p>
+                </div> 
+                <button class="buttonlike likedbutton far fa-thumbs-up"></button>
+                <button class="buttonlike unlikedbutton far fa-thumbs-down"></button>
               </div>
             </div>
           </div> 
-        -->   
+            --> 
         </div>
       </div>
       <div class="container">

@@ -2,6 +2,10 @@ const { authorization } = localStorage
 
 const content = $("#content")
 
+const modal = $(".modal")[0];
+
+const post_comments = $(".comments")[0];
+
 const api = axios.create({
   baseURL: '/api/'
 })
@@ -112,10 +116,89 @@ function addLastUser({ id, name, createdAt, photo }){
   $(".users").append(divCardProfile);
 }
 
-function addPost({ id, user, title, content, createdAt, likes }){
+function createComment({ content, createdAt, owner }){
+  const liCommentCard = document.createElement('li');
+  liCommentCard.className = 'comment-card';
+
+  const divCommentHeader = document.createElement('div');
+  divCommentHeader.className = 'field up';
+  
+  const h2FullName = document.createElement('h2');
+  h2FullName.textContent = owner.name;
+
+  const pCreatedAt = document.createElement('p');
+  pCreatedAt.textContent = createdAt
+
+  divCommentHeader.appendChild(h2FullName);
+  divCommentHeader.appendChild(pCreatedAt);
+
+  const divCommentFooter = document.createElement('div');
+  divCommentFooter.className = 'field down';
+
+  const pContent = document.createElement('p');
+  pContent.textContent = content
+
+  divCommentFooter.appendChild(pContent);
+
+  liCommentCard.appendChild(divCommentHeader)
+  liCommentCard.appendChild(divCommentFooter);
+
+  return liCommentCard;
+}
+
+openPost(4);
+
+async function openPost(post_id){
+  const post = (await api.get(`user/posts/${post_id}`, {
+    headers: { authorization }
+  })).data
+
+  if(!post){
+    return console.log({ error: "Post não encontrado" });
+  }
+  
+  console.log(post);
+
+  //getting all elements to set values
+  const [ post_owner_photo ] = $("#post-comment-photo")
+  const [ post_owner_fullname ] = $("#post-comment-fullname")
+
+  const [ post_content ] = $("#post-comment-content")
+  const [ post_count_likes ] = $("#post-comment-likes")
+
+  const [ post_comment_createdAt ] = $("#post-comment-createdAt");
+
+  //setting time in the create post
+  post_comment_createdAt.textContent = post.createdAt;
+
+  //setting image in the owner post
+  post_owner_photo.src = post.user.photo ? post.user.photo : 'assets/perfil.png';
+  post_owner_photo.onerror = () => (post_owner_photo.src = "assets/perfil.png")
+
+  //setting fullname in the owner post
+  post_owner_fullname.textContent = post.user.name;
+
+  //setting description in the post
+  post_content.textContent = post.content;
+
+  //setting like counts
+  post_count_likes.textContent = `${post.likes.length} curtidas`
+
+  post_comments.textContent = "";
+  if(post.comments.length > 0){
+    post.comments.forEach(comment => {
+      let newCommentElement = createComment(comment);
+      post_comments.appendChild(newCommentElement);
+    })
+  }
+  modal.style.display = "flex";
+}
+
+function addPost({ id, user, content, createdAt, likes, comments }){
   const { name, photo } = user;
 
   const postDiv = document.createElement('div')
+  postDiv.onclick = () => openPost(id);
   postDiv.className = "post";
 
   const divField_1 = document.createElement('div')
@@ -180,10 +263,20 @@ function addPost({ id, user, title, content, createdAt, likes }){
   buttonUnliked.className = 'buttonlike unlikedbutton far fa-thumbs-down';
   buttonUnliked.onclick = () => actionliked('unlike', id)
 
+  divButtonsliked.append(divLikes);
   divButtonsliked.appendChild(buttonLiked)
   divButtonsliked.appendChild(buttonUnliked);
 
-  divField_3.appendChild(divLikes);
+  const divComment = document.createElement('div');
+  divComment.className = 'comments';
+
+  const commentModal = document.createElement('button');
+  commentModal.textContent = `${comments.length} comentarios`;
+  commentModal.className = 'button-comments';
+
+  divComment.appendChild(commentModal);
+
+  divField_3.appendChild(divComment);
   divField_3.appendChild(divButtonsliked);
 
   postDiv.appendChild(divField_1)
@@ -200,9 +293,7 @@ $(".form_search")[0].addEventListener('submit', async (event) => {
     if(!value) return console.log("NAO TEM CONTENT");
   
     try{
-      const create = await api.post('/user/posts', {
-          content: value
-        }, {
+      const create = await api.post('/user/posts', { content: value }, {
           headers: { authorization }
         }
       );
@@ -238,10 +329,11 @@ function exit(){
     }
 
     const { name, photo } = user;
-    console.log({name, photo})
+
     $("#profile-name")[0].textContent = name;
+
     $("#profile-image")[0].src = photo ? photo : 'assets/perfil.png';
-    $("#profile-image")[0].onerror = () => ($("#profile-imaeg")[0].src = "assets/perfil.png")
+    $("#profile-image")[0].onerror = () => ($("#profile-image")[0].src = "assets/perfil.png")
 
     const posts = (await api.get('user/posts', {
       headers: {
@@ -269,3 +361,9 @@ function exit(){
     return window.location.replace('/auth');
   }
 })()
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}

@@ -110,8 +110,36 @@ module.exports = {
       return res.status(400).send({ error: err.message });
     }
   },
-  async getPost(req, res){
+  async getPostById(req, res){
     const { post_id } = req.params;
-    res.send("AINDA SENDO FEITO PARA RETORNA UM UNICO POST PELO ID");
+    const post = (await Post.findOne({
+      where: { id: post_id },
+      include: [{
+        association: 'comments',
+        attributes: ["id", "content", "createdAt"],
+        include: {
+          association: 'owner',
+          attributes: ["id", "name", "photo"]
+        }
+      },{
+        association: 'user',
+        attributes: ["id", "name", "photo"]
+      },{
+        association: 'likes',
+        attributes: ["user_id"]
+      }]
+    })).toJSON();
+
+    let createdAt = ms(new Date().getTime()-post.createdAt.getTime(), { long: true });
+    post.createdAt = createdAt;
+
+    if(post.comments.length > 0){
+      post.comments.forEach((comment, index) => {
+        let createdAt = ms(new Date().getTime()-comment.createdAt.getTime(), { long: true });
+        post.comments[index].createdAt = createdAt;
+      });
+    }
+
+    res.json(post);
   }
 }

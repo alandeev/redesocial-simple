@@ -14,6 +14,8 @@ routes.get('/', postController.get_all_posts);
 routes.get('/filter', postController.get_all_posts_and_filter);
 routes.post('/', postController.create_post);
 
+routes.get('/:post_id', postController.getPostById);
+
 //actions in the post!
 routes.get('/:post_id/getlikes', likeController.get_likes_someone_post);
 routes.get('/:post_id/like', likeController.add_like);

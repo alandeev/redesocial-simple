@@ -11,7 +11,7 @@ const Comment = require('../models/Comment');
 
       const post = await Post.findOne({
         where: { id: post_id }
-      })
+      });
 
       if(!post)
        return res.status(404).json({ error: "Postagem não encontrada." });
@@ -22,9 +22,9 @@ const Comment = require('../models/Comment');
 
       try{
         const comment = await Comment.create({ content, user_id, post_id })
-        res.json(comment);
+        return res.json(comment);
       }catch(err){
-        res.json({ error: err.message });
+        return res.json({ error: err.message });
       }  
     }
   }
