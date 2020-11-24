@@ -222,7 +222,7 @@ async function openPost(post_id){
 
   post_comments.textContent = "";
   if(post.comments.length > 0){
-    post.comments.forEach(comment => {
+    post.comments.reverse().forEach(comment => {
       let newCommentElement = createComment(comment);
       post_comments.appendChild(newCommentElement);
     })
