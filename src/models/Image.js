@@ -10,11 +10,16 @@ class Image extends Model{
         }
       },
       originalname: DataTypes.STRING,
+      path: DataTypes.STRING,
       mimetype: DataTypes.STRING,
       size: DataTypes.INTEGER,
     }, {
       sequelize
     });
+  }
+
+  static associate(models){
+    this.hasOne(models.User, { foreignKey: 'profile_id', as: 'user' });
   }
 }
 

@@ -20,3 +20,4 @@ User.associate(connection.models);
 Post.associate(connection.models);
 Like.associate(connection.models)
 Comment.associate(connection.models)
+Image.associate(connection.models);

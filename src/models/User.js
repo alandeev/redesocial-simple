@@ -7,6 +7,7 @@ class User extends Model{
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       photo: DataTypes.STRING,
+      profile_id: DataTypes.INTEGER
     },
     {
       sequelize
@@ -17,6 +18,7 @@ class User extends Model{
     this.hasMany(models.Post, { foreignKey: 'owner', as: 'posts' });
     this.hasMany(models.Like, { foreignKey: 'user_id', as: 'likes' });
     this.hasMany(models.Comment, { foreignKey: 'user_id', as: 'comments' });
+    this.belongsTo(models.Image, { foreignKey: 'profile_id', as: 'profile' });
   }
 }
 

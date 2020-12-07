@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Image = require('../models/Image');
 
 const filters = [{
     name: "lastuserscreated",
@@ -11,7 +12,16 @@ const filters = [{
 
 module.exports = {
   async index(req, res){
-    const findOneUserById = await User.findByPk(req.user.id);
+    const findOneUserById = await User.findByPk(req.user.id, {
+      attributes: {
+        exclude: ['profile_id', 'createdAt', 'updatedAt']
+      },
+      include: {
+        model: Image,
+        as: 'profile',
+        attributes: ['filename', 'originalname', 'mimetype']
+      }
+    });
    
     if(!findOneUserById)
       return res.json({ error: "Usuario não encontrado" });
