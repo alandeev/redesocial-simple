@@ -351,7 +351,6 @@ function exit(){
 }
 
 (async function(){
-  localStorage.authorization
   try{
     const user = (await api.get('user', {
       headers: {

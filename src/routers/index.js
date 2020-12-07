@@ -9,7 +9,7 @@ const routes = Router();
 //Auth's Routes 
 routes.use('/', authRoutes);
 
-//Client's Routes (Need Access Client)
+//Client's Routes (Need Access Client) 
 routes.use('/user', clientRoutes);
 
 //Post's Routes (Need access Client) 

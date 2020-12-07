@@ -112,6 +112,7 @@ module.exports = {
   },
   async getPostById(req, res){
     const { post_id } = req.params;
+
     const post = (await Post.findOne({
       where: { id: post_id },
       include: [{

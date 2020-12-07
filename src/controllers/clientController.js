@@ -9,15 +9,15 @@ const filters = [{
   }
 ]
 
-
 module.exports = {
   async index(req, res){
-    const user = await User.findByPk(req.user.id);
-    if(!user)
+    const findOneUserById = await User.findByPk(req.user.id);
+   
+    if(!findOneUserById)
       return res.json({ error: "Usuario não encontrado" });
     
-    user.password = undefined;
-    return res.send(user);
+    findOneUserById.password = undefined;
+    return res.send(findOneUserById);
   },
   
   async getAll(req, res){
