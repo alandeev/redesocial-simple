@@ -15,6 +15,7 @@ module.exports = {
         unique: true
       },
       originalname: DataTypes.STRING,
+      mimetype: DataTypes.STRING,
       size: DataTypes.STRING,
       created_at: DataTypes.DATE,
       updated_at: DataTypes.DATE
