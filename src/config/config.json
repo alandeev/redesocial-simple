@@ -6,11 +6,8 @@
     "is_admin": true
   },
   "database": {
-    "dialect": "postgres",
-    "username": "postgres",
-    "password": "123456",
-    "database": "rede-socialbasic",
-    "host": "localhost",
+    "storage": "path/to/database.sqlite",
+    "dialect": "sqlite",
     "define": {
       "timestamps": true,
       "underscored": true

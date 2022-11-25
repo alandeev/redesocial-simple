@@ -260,6 +260,8 @@ body {
   cursor: pointer;
 }
 
+.section .feed .posts .post .field-3 .deletebutton:hover{ color: tomato; }
+
 .section .feed .posts .post .field-3 .likedbutton:hover{ color: green; }
 
 .section .feed .posts .post .field-3 .unlikedbutton:hover{ color: tomato; }

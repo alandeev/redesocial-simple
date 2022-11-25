@@ -14,6 +14,7 @@ routes.get('/', postController.get_all_posts);
 routes.get('/filter', postController.get_all_posts_and_filter);
 routes.post('/', postController.create_post);
 
+routes.delete('/:post_id', postController.delete_post_by_id);
 routes.get('/:post_id', postController.getPostById);
 
 //actions in the post!

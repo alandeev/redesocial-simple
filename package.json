@@ -1,14 +1,17 @@
 {
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "ms": "^2.1.2",
-    "multer": "^1.4.2",
-    "pg": "^8.5.0",
-    "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0"
+    "cors": "~2.8.5",
+    "dotenv": "~8.2.0",
+    "express": "~4.17.1",
+    "jsonwebtoken": "~8.5.1",
+    "ms": "~2.1.2",
+    "multer": "~1.4.2",
+    "nodemon": "~2.0.20",
+    "pg": "~8.5.0",
+    "sequelize": "~6.3.5",
+    "sequelize-cli": "~6.2.0",
+    "sqlite3": "^5.1.2",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "dev": "nodemon ./src"

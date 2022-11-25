@@ -70,6 +70,27 @@ function addLike(action, prop){
   }
 }
 
+async function deletePost(post_id){
+  if(!post_id)
+   return;
+  
+  try{
+    const response = (await api.delete(`user/posts/${post_id}`, {
+      headers: { authorization }
+    })).data
+
+    if(response.error)
+      return alert(response.error)    
+
+    window.location.reload()
+
+    return console.log({ error: "Erro ao tentar setar novo like" })
+  }catch({ response }){
+    const { data } = response;
+    return alert(data.error);
+  }
+}
+
 async function actionliked(action, post_id){
   if(!action ||!post_id)
    return;
@@ -200,6 +221,7 @@ async function openPost(post_id){
 
   const [ post_comment_createdAt ] = $("#post-comment-createdAt");
 
+  $(".deletebutton")[0].onclick = () => deletePost(post_id);
   $(".likedbutton")[0].onclick = () => actionliked('like', post_id);
   $(".unlikedbutton")[0].onclick = () => actionliked('unlike', post_id);
   

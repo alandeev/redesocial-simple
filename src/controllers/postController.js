@@ -27,6 +27,29 @@ const convertTime = {
 }
 
 module.exports = {
+  async delete_post_by_id(req, res) {
+    const { post_id } = req.params;
+
+    const post = await Post.findOne({
+      where: {
+        id: post_id,
+        owner: req.user.id
+      }
+    })
+
+    if(!post) {
+      return res.status(400).send({ 
+        error: "Você não tem permissão para deletar" 
+      });
+    }
+
+    await post.destroy()
+
+    res.status(200).send({
+      message: "Post deletado com sucesso"
+    })
+
+  },
   async get_all_posts_and_filter(req, res){
     const { type, key } = req.query;
     if(!type || !key || key.length == 0)
